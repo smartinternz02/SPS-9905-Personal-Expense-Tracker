@@ -1,0 +1,116 @@
+
+{% extends "layout.html" %}
+{% block title %}My Money - Budgets on Fire{% endblock %}
+
+{% block nav %}
+  <li><a href="/">Home</a></li>
+{% if session.user_id %}
+  <li class="active"><a href="/budget">My budget</a></li>
+  <li><a href="/monthlylimit">set limit</a></li>
+ <li> <a href="/mbudget">budget history</a></li>
+  <li><a href="/logout">Logout</a></li>
+{% else %}
+  <li><a href="/about">About</a></li>
+  <li><a href="/register">Register</a></li>
+  <li><a href="/login">Login</a></li>
+{% endif %}
+{% endblock %}
+      
+{% block main %}
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>ADD BUDGET</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>add budget</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+ {% endblock %}   
+{% block body  %}
+<section id="pricing" class="pricing">
+      <div class="container"style="text-align:center;" >
+<center>
+        <div class="row" style="display:block;margin:0px auto;text-align:center;" >
+
+          
+
+          <div class="col-lg-10 col-md-10 mt-4 mt-md-0">
+            <div class="box featured" data-aos="fade-up">
+<div class="add-budget">
+    
+        {{msg}}
+        <div class="centre-contents">
+            <h3>Available Budget {{day}} {{month}} {{year}}: 
+            <span style="font-size: 10px; color: black; font-weight: bold;">{{ notice }}</span>    
+            <span class="finalvalue">{{ finalamount}}</span></h3>
+            <div class="income">
+                <h3>income:
+                <span id="right"> {{ fincome }}</span></h3>
+            </div>
+            <div class="expense">
+                <h3>Expense:
+                <span id="right">{{ fexpense }}</span></h3>
+            </div>
+        </div>
+    </div>
+     
+   
+    <form action="/addbudget" method="POST">
+        <div class="budget-tab">
+            <input type="date" name="date" id="">
+            <select name="select" id="">
+                <option value="+">+</option>
+                <option value="-">-</option>
+            </select>
+            <input type="text" name="dincome" id="" placeholder=" description">
+            <input type="tel" name="income" id="" placeholder="Value">
+            <button>Add</button>
+        </div>
+    </form>
+   
+    
+    
+    
+    <div class="display"style="text-align:center;">
+        <div class="display-income">
+            <div class="incomec"><h3>Income</h3></div>
+            {% for value in incomes %}
+            <label for="value">{{ value.3 }}
+                <span id="right" class="incomec">
+                  <h3>  {{ value.4 }} </h3>
+                </span>
+            </label>                            
+            {% endfor %}
+        </div>
+        <div class="display-expense">
+            <div class="expensec"><h3>Expenses</h3></div>
+            {% for value in expenses %}
+            <label for="value">{{value.3}}
+                <span id="right" class="expensec">
+                   <h3> {{value.4}}</h3>
+                </span>
+            </label>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+              
+            </div>
+          </div>
+          
+
+        </div>
+        </center>
+
+      </div>
+    </section><!-- End Pricing Section -->
+
+
+{% endblock %}

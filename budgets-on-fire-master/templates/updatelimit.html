@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block title %}update- Budgets on Fire{% endblock %}
+
+{% block nav %}
+  <li><a href="/">Home</a></li>
+{% if session.user_id %}
+   <li><a href="/budget">add budget</a></li>
+  
+  <li class="active"><a href="/updatelimit">Money limit</a></li>
+  <li><a href="/logout">Logout</a></li>
+{% else %}
+  <li><a href="/about">About</a></li>
+  <li><a href="/register">Register</a></li>
+  <li><a href="/login">Login</a></li>
+{% endif %}
+{% endblock %}
+{% block main %}
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>UPDATE BUDGET</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>update budget</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+ {% endblock %}  
+{% block body %}
+ <section id="pricing" class="pricing">
+      <div class="container"style="text-align:center;" >
+<center>
+        <div class="row" style="display:block;margin:0px auto;text-align:center;" >
+
+          
+
+          <div class="col-lg-25 col-md-25 mt-7 mt-md-0">
+            <div class="box featured" data-aos="fade-up">
+<form action="/setupdatelimit" method="POST">
+    <div class="updatelimit">
+        <div class="alert {{ indicator }}">{{msg}}</div>  
+        <h2> Update Monthly Limit</h2>
+        
+        <input type="month" name="month" id="month" required>    
+        <input type="text" placeholder="ex 5000" name="value" required>
+        <button>Update</button>
+    </div>
+</form>
+</div>
+          </div>
+          
+
+        </div>
+        </center>
+
+      </div>
+    </section
+{% endblock %}

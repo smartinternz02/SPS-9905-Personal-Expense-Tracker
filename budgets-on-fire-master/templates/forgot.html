@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block body %}
+<section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>FORGOT PASSWORD</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>recover</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
+      <div class="container"style="text-align:center;" >
+<center>
+        <div class="row" style="display:block;margin:0px auto;text-align:center;" >
+
+          
+
+          <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
+            <div class="box featured" data-aos="fade-up">
+<div class="login-content">
+    <form action="/forgotpassword" method="POST">
+        <h3>Forgot password</h3>
+        <p class="line"></p>   
+        <div class="ale {{ indicator }}">{{msg}}</div>  
+        <div class="flo">
+        <h2>Email</h2>
+            <input type="text" name="email" required autofocus>
+            
+            <i class="las la-user-circle"></i>        
+        </div> 
+        <button type="submit" name="submit">Submit</button>
+        
+    </form>
+   
+</div>
+        </div>
+          </div>
+          
+
+        </div>
+        </center>
+
+      </div>
+    </section>
+{% endblock %}
+         
